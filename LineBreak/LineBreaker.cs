@@ -3,6 +3,9 @@ using System.Text;
 
 namespace LineBreak
 {
+    /// <summary>
+    /// Class which will accept text input and break line breaks on whole words.
+    /// </summary>
     public class LineBreaker
     {
         public string Text { get; private set; }
@@ -11,7 +14,12 @@ namespace LineBreak
             Text = text;
         }
 
-        public void Break(int columns)
+        /// <summary>
+        /// Create line breaks on the instance of text
+        /// </summary>
+        /// <param name="columns">a postive integer for character count to break on lines</param>
+        /// <returns>Returns back a new instance of string with breaks.</returns>
+        public string Break(int columns)
         {
             if(columns < 0)
             {
@@ -20,7 +28,7 @@ namespace LineBreak
 
             if(columns == 0)
             {
-                return;
+                return Text;
             }
 
             int breakCounter = 0, i = 0;
@@ -55,7 +63,7 @@ namespace LineBreak
                 i++;
             }
 
-            Text = builder.ToString();
+            return builder.ToString();
         }
     }
 }
